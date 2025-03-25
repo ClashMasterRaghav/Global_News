@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global News Explorer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.105.0/Cesium.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.105.0/Widgets/widgets.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <div class="loading" id="loadingIndicator">Loading globe</div>
+    <div id="tooltip" class="tooltip"></div>
+    
+    <div id="newsSidebar">
+        <div class="sidebar-header">
+            <h1>Global News Explorer</h1>
+        </div>
+        
+        <div class="sidebar-content">
+            <div id="newsDetails">
+                <div class="news-detail-header">
+                    <h3 id="newsTitle"></h3>
+                    <span id="newsCategory" class="category"></span>
+                </div>
+                <div class="news-detail-content">
+                    <p id="newsSummary"></p>
+                    <p id="newsTimestamp" class="timestamp"></p>
+                </div>
+                <div class="news-detail-footer">
+                    <button id="backButton">Back to news list</button>
+                </div>
+            </div>
+            
+            <h2>Latest News</h2>
+            <div id="newsList"></div>
+        </div>
+    </div>
+    
+    <div id="controls">
+        <div id="categoryFilters">
+            <button class="categoryButton categoryButton-Business active" data-category="Business">Business</button>
+            <button class="categoryButton categoryButton-Politics active" data-category="Politics">Politics</button>
+            <button class="categoryButton categoryButton-Technology active" data-category="Technology">Technology</button>
+            <button class="categoryButton categoryButton-Sports active" data-category="Sports">Sports</button>
+            <button class="categoryButton categoryButton-Health active" data-category="Health">Health</button>
+            <button class="categoryButton categoryButton-Entertainment active" data-category="Entertainment">Entertainment</button>
+        </div>
+    </div>
+    
+    <div id="headlineBanner" class="headline-banner" style="display: none;">
+        <div class="headline-banner-header">
+            <h3 id="bannerTitle"></h3>
+            <div class="headline-banner-close" id="bannerClose">×</div>
+        </div>
+        <div class="headline-banner-content">
+            <p id="bannerSummary"></p>
+        </div>
+        <div class="headline-banner-footer">
+            <span id="bannerCategory" class="category"></span>
+            <button id="bannerViewButton">View Details</button>
+        </div>
+        <div class="headline-banner-progress">
+            <div class="headline-banner-progress-bar" id="bannerProgressBar"></div>
+        </div>
+      </div>
+      
+    <!-- Search bar -->
+    <div class="search-container">
+      <i class="search-icon">🔍</i>
+      <input type="text" class="search-bar" placeholder="Search for news, locations, or categories...">
+    </div>
+
+    <!-- Navigation controls -->
+    <div class="navigation-controls">
+      <div class="nav-button" id="zoomIn" title="Zoom In">+</div>
+      <div class="nav-button" id="zoomOut" title="Zoom Out">-</div>
+      <div class="nav-button" id="resetView" title="Reset View">⟲</div>
+    </div>
+
+    <!-- Compass -->
+    <div class="compass" id="compass">
+      <div class="compass-inner">
+        <div class="compass-needle" id="compassNeedle"></div>
+        <div class="compass-center"></div>
+      </div>
+    </div>
+
+    <!-- Time indicator -->
+    <div class="time-indicator" id="timeIndicator">
+      Local Time: <span id="localTime">12:00 PM</span>
+    </div>
+
+    <!-- Zoom level indicator -->
+    <div class="zoom-indicator" id="zoomIndicator">
+      Zoom: <span id="zoomLevel">10,000 km</span>
+    </div>
+      
+    <script src="script.js"></script>
+</body>
+</html>
