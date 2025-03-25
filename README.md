@@ -6,7 +6,7 @@
 🔗 [Global News Explorer](https://clashmasterraghav.github.io/Global_News/)
 
 ## 📷 Screenshots
-![Global News Explorer](./image.png)
+![Global News Explorer](./image.jpg)
 
 ## 🎯 Features
 - 🗺️ **3D Globe Visualization** powered by **Cesium.js**.
